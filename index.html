@@ -1,0 +1,127 @@
+
+<!DOCTYPE html>
+
+<html ng-app>
+<head>
+    <title>finanse</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js"></script>
+
+    <script type="text/javascript" src="js/finanse_mappings.js"></script>
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <script src="js/controller.js"></script>
+    <style>
+    body {
+  padding-top: 60px;
+}
+@media (max-width: 979px) {
+  body {
+    padding-top: 0px;
+  }
+}
+select#stocks, select#dates {
+    width:100%;
+}
+.border-color {
+  background-color: #006DCC;
+  background-image: linear-gradient(to bottom, #0088CC, #0044CC);
+  color:#fff;
+}
+
+    </style>
+
+</head>
+
+<body>
+<div ng-controller="MyCntrl">
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span2">
+            <div class="row-fluid">
+
+                <div class="span6" style="margin: 0px; padding:0px;">
+                    <div class="nav-header">Stocks</div>
+                               <select id="stocks" multiple size="25">
+		                           <option ng-repeat="x in russell">{{x}}</option>
+                    </select>
+                </div>
+                <div class="span6" style="margin: 0px; padding:0px;">
+                    <div class="nav-header">Dates</div>
+                               <select id="dates" multiple size="25">
+		                           <option ng-repeat="x in dates">{{x}}</option>
+                    </select>
+                </div>
+
+            </div><!--row-fluid-->
+            <button class="btn btn-primary" id="b" ng-click="filler()">Get Data</button>
+        </div><!--/span-->
+        <div class="span10">
+        <div class="feature-desc">
+
+
+            <table class="table table-condensed table-striped table-bordered" id="key">
+			    <tr>
+			        <th  class="border-radius border-color">Income Statement</th>
+			        <th   class="border-radius border-color">Value</th>
+			    </tr>
+			    <tr   ng-repeat="x in income">
+			        <td>{{x}}</td>
+			        <td>{{incomeValues[x]}}</td>
+			    </tr>
+			</table>
+
+			<table class="table table-condensed table-striped table-bordered">
+				<tr>
+					<th  class="border-radius border-color">Balance Sheet</th>
+					<th  class="border-radius border-color">Value</th>
+				</tr>
+				<tr   ng-repeat="x in balance">
+					<td>{{x}}</td>
+					<td>{{balanceValues[x]}}</td>
+				</tr>
+			</table>
+
+			<table class="table table-condensed table-striped table-bordered">
+				<tr>
+					<th  class="border-radius border-color">Cash Flow Statement</th>
+					<th  class="border-radius border-color">Value</th>
+				</tr>
+				<tr   ng-repeat="x in cashflow">
+					<td>{{x}}</td>
+					<td>{{cashValues[x]}}</td>
+				</tr>
+			</table>
+
+
+			<table class="table table-condensed table-striped table-bordered">
+				<tr>
+					<th  class="border-radius border-color">Ratios</th>
+					<th  class="border-radius border-color">Value</th>
+				</tr>
+				<tr  ng-repeat="x in ratios">
+					<td>{{x}}</td>
+					<td>{{ratioValues[x]}}</td>
+				</tr>
+			</table>
+
+
+
+
+        </div>
+
+        </div><!--span -->
+</div><!-- row -->
+</div><!--container-->
+</div><!--ng controller -->
+<script>
+
+
+
+
+</script>
+<script src="js/bootstrap.min.js"></script>
+
+
+
+</body>
+</html>
